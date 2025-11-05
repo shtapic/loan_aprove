@@ -4,33 +4,38 @@
 
 Проект объединяет **классические ML-модели** (Random Forest, Logistic Regression, LightGBM, стекинг) и простую **нейросеть MLP на PyTorch**.
 Всё организовано модульно и воспроизводимо, с прицелом на переиспользование и обучение.
+    
+### LightGBM Classifier Configuration
+Best score:
 
-Playground Series:
-    Score: 0.95672
+    Public Score: 0.95672
+
     Private score: 0.95677
     
-LGBMClassifier
------------Parameters----------------
-    boosting_type 	'gbdt'
-    num_leaves 	31
-    max_depth 	-1
-    learning_rate 	0.1
-    n_estimators 	100
-    subsample_for_bin 	200000
-    objective 	None
-    class_weight 	'balanced'
-    min_split_gain 	0.0
-    min_child_weight 	0.001
-    min_child_samples 	20
-    subsample 	1.0
-    subsample_freq 	0
-    colsample_bytree 	1.0
-    reg_alpha 	0.0
-    reg_lambda 	0.0
-    random_state 	42
-    n_jobs 	-1
-    importance_type 	'split'
--------------------------------------
+Используется как один из классических ML-бейзлайнов.  
+Параметры настроены для сбалансированной бинарной классификации при дисбалансе классов.
+
+| Parameter | Value |
+|------------|--------|
+| **boosting_type** | `'gbdt'` |
+| **num_leaves** | `31` |
+| **max_depth** | `-1` |
+| **learning_rate** | `0.1` |
+| **n_estimators** | `100` |
+| **subsample_for_bin** | `200000` |
+| **objective** | `None` |
+| **class_weight** | `'balanced'` |
+| **min_split_gain** | `0.0` |
+| **min_child_weight** | `0.001` |
+| **min_child_samples** | `20` |
+| **subsample** | `1.0` |
+| **subsample_freq** | `0` |
+| **colsample_bytree** | `1.0` |
+| **reg_alpha** | `0.0` |
+| **reg_lambda** | `0.0` |
+| **random_state** | `42` |
+| **n_jobs** | `-1` |
+| **importance_type** | `'split'` |
 
 
 ---
@@ -174,7 +179,7 @@ sys.path.insert(0, os.path.abspath('src'))
 | **ROC-AUC**                   | Площадь под ROC-кривой (True Positive Rate vs False Positive Rate). Показывает способность модели различать классы независимо от выбранного порога.                                 | 1 — идеально; 0.5 — случайное угадывание.          |
 | **Average Precision (macro)** | Площадь под PR-кривой (Precision-Recall), усреднённая по классам. Более показательная при сильном дисбалансе классов.                                                               | 1 — идеальный precision/recall; ближе к 0 — плохо. |
 | **Log-loss**                  | Средняя логарифмическая потеря между вероятностями предсказания и истинными метками. Строго наказывает за уверенные, но неверные прогнозы.                                          | Чем меньше, тем лучше; идеал = 0.                  |
-                                         | Чем меньше, тем лучше; идеал = 0.                  |
+                                         
 
 
 Для бинарной классификации:
